@@ -1,3 +1,82 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "audiobook-1",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1687678606437-cc3d25978b47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhYnN0cmFjdCUyMGNvdmVyfGVufDB8fHx8MTc2MzgyNzYwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract cover"
+    },
+    {
+      "id": "audiobook-2",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1538370965046-79c0d6907d47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzcGFjZSUyMHN0YXJzfGVufDB8fHx8MTc2Mzg5MDY3MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "space stars"
+    },
+    {
+      "id": "audiobook-3",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1595411425732-e69c1abe2763?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnZW9tZXRyaWMlMjBwYXR0ZXJufGVufDB8fHx8MTc2Mzc4OTM5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "geometric pattern"
+    },
+    {
+      "id": "audiobook-4",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1601257774527-a5b80a1f13ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaW5pbWFsaXN0JTIwZGVzaWdufGVufDB8fHx8MTc2Mzg3NDk2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist design"
+    },
+    {
+      "id": "audiobook-5",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1704827466488-7933d65e8044?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dmlicmFudCUyMGNvbG9yc3xlbnwwfHx8fDE3NjM4NTc2NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vibrant colors"
+    },
+    {
+      "id": "ebook-1",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1717564954563-e0263d335695?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYW50YXN5JTIwbGFuZHNjYXBlfGVufDB8fHx8MTc2MzgwOTAyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fantasy landscape"
+    },
+    {
+      "id": "ebook-2",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1507961455425-0caef37ef6fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMHNreWxpbmV8ZW58MHx8fHwxNzYzODAwNTkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city skyline"
+    },
+    {
+      "id": "ebook-3",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1710875409463-73b3b6f6af7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxoaXN0b3JpY2FsJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYzODE2OTQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "historical portrait"
+    },
+    {
+      "id": "ebook-4",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1633643092028-b66187af7d47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzY2ktZmklMjByb2JvdHxlbnwwfHx8fDE3NjM4OTA2NzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sci-fi robot"
+    },
+    {
+      "id": "ebook-5",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1600711503545-b13de35dac05?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxuYXR1cmUlMjBmb3Jlc3R8ZW58MHx8fHwxNzYzNzg2NDY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "nature forest"
+    },
+    {
+      "id": "ebook-6",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1730059798300-74933ab7ef71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxteXN0ZXJ5JTIwbm92ZWx8ZW58MHx8fHwxNzYzODkwNjcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mystery novel"
+    },
+    {
+      "id": "ebook-7",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1673266968729-48a2c829105f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cm9tYW5jZSUyMGNvdXBsZXxlbnwwfHx8fDE3NjM4OTA2NzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "romance couple"
+    },
+    {
+      "id": "ebook-8",
+      "description": "Cover for an ebook",
+      "imageUrl": "https://images.unsplash.com/photo-1730382624761-af8112d26209?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVzaW5lc3MlMjBjaGFydHxlbnwwfHx8fDE3NjM3ODExMjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business chart"
+    }
+  ]
 }
