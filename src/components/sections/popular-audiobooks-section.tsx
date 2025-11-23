@@ -17,7 +17,7 @@ export default function PopularAudiobooksSection() {
     <section className="section-spacing">
       <div className="container mx-auto px-4">
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">
-          Popular Audiobooks
+          کتاب‌های صوتی محبوب
         </h2>
         <Carousel
           opts={{

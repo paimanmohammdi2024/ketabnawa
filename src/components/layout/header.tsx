@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { BookNovaLogo } from '@/components/icons';
+import { NawaBookLogo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -10,9 +10,9 @@ import { Menu, Search } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const navLinks = [
-  { name: 'Books', href: '/books' },
-  { name: 'Audiobooks', href: '/audiobooks' },
-  { name: 'Categories', href: '/categories' },
+  { name: 'کتاب‌ها', href: '/books' },
+  { name: 'کتاب‌های صوتی', href: '/audiobooks' },
+  { name: 'دسته‌بندی‌ها', href: '/categories' },
 ];
 
 export default function Header() {
@@ -24,8 +24,8 @@ export default function Header() {
         {/* Logo and Main Nav (Desktop) */}
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <BookNovaLogo className="h-6 w-6 text-primary" />
-            <span className="hidden font-bold sm:inline-block">BookNova</span>
+            <NawaBookLogo className="h-6 w-6 text-primary" />
+            <span className="hidden font-bold sm:inline-block">کتاب نوا</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {navLinks.map((link) => (
@@ -51,8 +51,8 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <Link href="/" className="mb-6 flex items-center space-x-2">
-                <BookNovaLogo className="h-6 w-6 text-primary" />
-                <span className="font-bold">BookNova</span>
+                <NawaBookLogo className="h-6 w-6 text-primary" />
+                <span className="font-bold">کتاب نوا</span>
               </Link>
               <nav className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
@@ -74,7 +74,7 @@ export default function Header() {
         <div className="flex flex-1 items-center justify-center md:justify-center">
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search books..." className="pl-10 rounded-full" />
+            <Input placeholder="جستجوی کتاب..." className="pl-10 rounded-full" />
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export default function Header() {
         <div className="flex items-center justify-end space-x-2">
           <ThemeToggle />
           <Button asChild className="rounded-full">
-            <Link href="/login">Login</Link>
+            <Link href="/login">ورود</Link>
           </Button>
         </div>
       </div>

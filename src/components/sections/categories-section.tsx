@@ -7,7 +7,7 @@ export default function CategoriesSection() {
     <section className="section-spacing bg-background">
       <div className="container mx-auto px-4">
         <h2 className="mb-12 text-center text-3xl font-bold tracking-tight md:text-4xl">
-          Explore by Category
+          کاوش بر اساس دسته‌بندی
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {categories.map((category) => (

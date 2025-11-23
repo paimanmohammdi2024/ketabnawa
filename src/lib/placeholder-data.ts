@@ -15,29 +15,29 @@ export type Category = {
 };
 
 export const popularAudiobooks: Book[] = [
-  { id: 1, title: 'The Digital Mind', author: 'Arvin Ash', price: '$19.99', coverImageId: 'audiobook-1' },
-  { id: 2, title: 'Quantum Echoes', author: 'Eva Rostova', price: '$24.99', coverImageId: 'audiobook-2' },
-  { id: 3, title: 'Cyberia', author: 'Kenji Tanaka', price: '$14.99', coverImageId: 'audiobook-3' },
-  { id: 4, title: 'Zero Point', author: 'Lila Chen', price: '$29.99', coverImageId: 'audiobook-4' },
-  { id: 5, title: 'Synthetic Dreams', author: 'Marcus Vance', price: '$22.50', coverImageId: 'audiobook-5' },
+  { id: 1, title: 'ذهن دیجیتال', author: 'آروین اش', price: '$۱۹.۹۹', coverImageId: 'audiobook-1' },
+  { id: 2, title: 'پژواک‌های کوانتومی', author: 'اوا رستوا', price: '$۲۴.۹۹', coverImageId: 'audiobook-2' },
+  { id: 3, title: 'سایبریا', author: 'کنجی تاناکا', price: '$۱۴.۹۹', coverImageId: 'audiobook-3' },
+  { id: 4, title: 'نقطه صفر', author: 'لیلا چن', price: '$۲۹.۹۹', coverImageId: 'audiobook-4' },
+  { id: 5, title: 'رویاهای مصنوعی', author: 'مارکوس ونس', price: '$۲۲.۵۰', coverImageId: 'audiobook-5' },
 ];
 
 export const latestEbooks: Book[] = [
-  { id: 1, title: 'Chronos Rift', author: 'Julian Verse', price: '$9.99', coverImageId: 'ebook-1' },
-  { id: 2, title: 'Neon City', author: 'Alex Drake', price: '$12.99', coverImageId: 'ebook-2' },
-  { id: 3, title: 'The Last Question', author: 'Isaac Asimov', price: '$7.99', coverImageId: 'ebook-3' },
-  { id: 4, title: 'Project Hail Mary', author: 'Andy Weir', price: '$15.00', coverImageId: 'ebook-4' },
-  { id: 5, title: 'Forest of Secrets', author: 'Elara Vance', price: '$8.50', coverImageId: 'ebook-5' },
-  { id: 6, title: 'The Silent Patient', author: 'Alex Michaelides', price: '$11.25', coverImageId: 'ebook-6' },
-  { id: 7, title: 'Starlight Overdrive', author: 'Zane Harris', price: '$10.99', coverImageId: 'ebook-7' },
-  { id: 8, title: 'The Growth Mindset', author: 'Carol Dweck', price: '$14.50', coverImageId: 'ebook-8' },
+  { id: 1, title: 'شکاف کرونوس', author: 'جولیان ورس', price: '$۹.۹۹', coverImageId: 'ebook-1' },
+  { id: 2, title: 'شهر نئونی', author: 'الکس دریک', price: '$۱۲.۹۹', coverImageId: 'ebook-2' },
+  { id: 3, title: 'آخرین سوال', author: 'ایزاک آسیموف', price: '$۷.۹۹', coverImageId: 'ebook-3' },
+  { id: 4, title: 'پروژه هیل مری', author: 'اندی ویر', price: '$۱۵.۰۰', coverImageId: 'ebook-4' },
+  { id: 5, title: 'جنگل اسرار', author: 'الارا ونس', price: '$۸.۵۰', coverImageId: 'ebook-5' },
+  { id: 6, title: 'بیمار خاموش', author: 'الکس مایکلیدیس', price: '$۱۱.۲۵', coverImageId: 'ebook-6' },
+  { id: 7, title: 'اوردرایو استارلایت', author: 'زین هریس', price: '$۱۰.۹۹', coverImageId: 'ebook-7' },
+  { id: 8, title: 'ذهنیت رشد', author: 'کارول دوک', price: '$۱۴.۵۰', coverImageId: 'ebook-8' },
 ];
 
 export const categories: Category[] = [
-  { name: 'Self-Help', icon: Heart },
-  { name: 'Literature', icon: BookOpen },
-  { name: 'Psychology', icon: BrainCircuit },
-  { name: 'Romance', icon: Heart },
-  { name: 'Business', icon: Briefcase },
-  { name: 'Education', icon: GraduationCap },
+  { name: 'خودسازی', icon: Heart },
+  { name: 'ادبیات', icon: BookOpen },
+  { name: 'روانشناسی', icon: BrainCircuit },
+  { name: 'عاشقانه', icon: Heart },
+  { name: 'کسب و کار', icon: Briefcase },
+  { name: 'آموزش', icon: GraduationCap },
 ];
