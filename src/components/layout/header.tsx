@@ -22,12 +22,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center px-4">
         {/* Logo and Main Nav (Desktop) */}
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+        <div className="mr-4 hidden md:flex items-center">
+          <Link href="/" className="ml-6 flex items-center space-x-2 rtl:space-x-reverse">
             <NawaBookLogo className="h-6 w-6 text-primary" />
             <span className="hidden font-bold sm:inline-block">کتاب نوا</span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="flex items-center gap-6 text-sm font-medium">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -49,8 +49,8 @@ export default function Header() {
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
-              <Link href="/" className="mb-6 flex items-center space-x-2">
+            <SheetContent side="right">
+              <Link href="/" className="mb-6 flex items-center space-x-2 rtl:space-x-reverse">
                 <NawaBookLogo className="h-6 w-6 text-primary" />
                 <span className="font-bold">کتاب نوا</span>
               </Link>
@@ -73,13 +73,13 @@ export default function Header() {
         {/* Search Bar */}
         <div className="flex flex-1 items-center justify-center md:justify-center">
           <div className="relative w-full max-w-sm">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="جستجوی کتاب..." className="pl-10 rounded-full" />
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input placeholder="جستجوی کتاب..." className="pr-10 rounded-full" />
           </div>
         </div>
 
         {/* Right side actions */}
-        <div className="flex items-center justify-end space-x-2">
+        <div className="flex items-center justify-end space-x-2 rtl:space-x-reverse">
           <ThemeToggle />
           <Button asChild className="rounded-full">
             <Link href="/login">ورود</Link>

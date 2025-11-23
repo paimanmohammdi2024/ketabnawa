@@ -48,7 +48,7 @@ export default function Footer() {
           {/* Social Media Column */}
           <div>
             <h3 className="font-semibold text-lg mb-4 text-foreground">با ما در ارتباط باشید</h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 rtl:space-x-reverse">
               {SocialLinks.map((social) => (
                 <Link key={social.name} href={social.href} aria-label={social.name} className="text-muted-foreground hover:text-primary transition-colors">
                   <social.icon className="w-6 h-6" />
