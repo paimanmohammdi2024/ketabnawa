@@ -42,17 +42,20 @@ const NavLink = ({ item, pathname, isCollapsed }: { item: typeof navItems[0], pa
     const isActive = pathname.startsWith(item.href);
     const linkContent = (
          <>
-            <item.icon className="h-5 w-5 shrink-0" />
-            <span className={cn("transition-opacity", isCollapsed ? "opacity-0 w-0" : "opacity-100")}>
-            {item.label}
+            <item.icon className={cn("h-5 w-5 shrink-0", isActive ? "text-primary" : "")} />
+            <span className={cn(
+                "transition-opacity font-medium", 
+                isCollapsed ? "opacity-0 w-0" : "opacity-100",
+                isActive ? "text-primary font-semibold" : "text-muted-foreground"
+            )}>
+              {item.label}
             </span>
          </>
     );
     const commonClasses = cn(
-        "flex items-center gap-3 rounded-lg text-muted-foreground transition-all h-10",
-        "hover:text-foreground hover:bg-accent/20 hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)]",
-        isActive && "bg-accent/20 text-accent-foreground shadow-[0_0_15px_hsl(var(--primary)/0.5)]",
-        isCollapsed ? "w-10 justify-center" : "w-full justify-start px-3"
+        "flex items-center gap-4 rounded-none transition-colors duration-200 ease-in-out relative",
+        "hover:bg-accent/10",
+        isCollapsed ? "w-10 h-10 justify-center" : "w-full justify-start px-4 py-3"
     );
 
     if (isCollapsed) {
@@ -60,6 +63,7 @@ const NavLink = ({ item, pathname, isCollapsed }: { item: typeof navItems[0], pa
             <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                     <Link href={item.href} className={commonClasses}>
+                        {isActive && <div className="absolute right-0 h-full w-1 bg-primary rounded-l-full"></div>}
                         {linkContent}
                     </Link>
                 </TooltipTrigger>
@@ -72,6 +76,7 @@ const NavLink = ({ item, pathname, isCollapsed }: { item: typeof navItems[0], pa
 
     return (
         <Link href={item.href} className={commonClasses}>
+           {isActive && <div className="absolute right-0 h-full w-1 bg-primary rounded-l-full"></div>}
            {linkContent}
         </Link>
     )
@@ -84,13 +89,14 @@ const MobileNavLink = ({ item, pathname }: { item: typeof navItems[0], pathname:
          <Link
             href={item.href}
             className={cn(
-            "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all",
-            "hover:text-foreground hover:bg-accent/20 hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)]",
-            isActive && "bg-accent/20 text-accent-foreground shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
+            "flex items-center gap-4 rounded-md px-4 py-3 transition-colors duration-200 ease-in-out relative",
+            "hover:bg-accent/10",
+            isActive ? "text-primary font-semibold" : "text-muted-foreground"
             )}
         >
+            {isActive && <div className="absolute right-0 h-full w-1 bg-primary rounded-l-full"></div>}
             <item.icon className="h-5 w-5" />
-            {item.label}
+            <span>{item.label}</span>
         </Link>
     );
 };
@@ -108,12 +114,12 @@ export default function NavContent({ isCollapsed = false, isMobile = false }: Na
                 <span className="text-xl">کتاب نوا</span>
               </Link>
             </div>
-            <nav className="flex flex-col gap-2 p-4">
+            <nav className="flex flex-col gap-1 p-2">
               {navItems.map((item) => (
                 <MobileNavLink key={item.href} item={item} pathname={pathname} />
               ))}
             </nav>
-            <div className="mt-auto p-4">
+            <div className="mt-auto p-2">
                  <MobileNavLink item={settingsItem} pathname={pathname} />
             </div>
         </>
@@ -122,12 +128,12 @@ export default function NavContent({ isCollapsed = false, isMobile = false }: Na
 
   return (
     <TooltipProvider>
-      <nav className="flex flex-col items-stretch gap-4 px-4 sm:py-5 flex-grow">
+      <nav className="flex flex-col items-stretch gap-1 py-4 flex-grow">
         {navItems.map((item) => (
           <NavLink key={item.href} item={item} pathname={pathname} isCollapsed={isCollapsed} />
         ))}
       </nav>
-      <div className="mt-auto border-t p-4">
+      <div className="mt-auto border-t p-2">
         <NavLink item={settingsItem} pathname={pathname} isCollapsed={isCollapsed} />
       </div>
     </TooltipProvider>
