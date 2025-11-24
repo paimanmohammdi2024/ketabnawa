@@ -74,6 +74,9 @@
   .glass-card {
     @apply bg-card/60 backdrop-blur-lg border border-white/10;
   }
+  .glass-nav {
+    @apply bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60;
+  }
 }
 
 @layer utilities {
