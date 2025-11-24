@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { NawaBookLogo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Menu, Search } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 
@@ -27,7 +27,7 @@ export default function Header() {
             <NawaBookLogo className="h-6 w-6 text-primary" />
             <span className="hidden font-bold sm:inline-block">کتاب نوا</span>
           </Link>
-          <nav className="flex items-center gap-6 text-sm font-medium">
+          <nav className="flex items-center gap-8 text-sm font-medium">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -50,6 +50,9 @@ export default function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+              </SheetHeader>
               <Link href="/" className="mb-6 flex items-center space-x-2 rtl:space-x-reverse">
                 <NawaBookLogo className="h-6 w-6 text-primary" />
                 <span className="font-bold">کتاب نوا</span>
