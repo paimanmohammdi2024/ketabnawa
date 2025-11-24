@@ -16,7 +16,7 @@ export default function AdminLayout({
     <div className="flex min-h-screen w-full bg-secondary/30" dir="rtl">
       <AdminSidebar isCollapsed={isCollapsed} onToggle={() => setIsCollapsed(!isCollapsed)} />
       <div className={cn("flex flex-1 flex-col transition-all duration-300 ease-in-out",
-         isCollapsed ? "sm:mr-16" : "sm:mr-64"
+         isCollapsed ? "sm:ml-16" : "sm:ml-64"
       )}>
         <AdminHeader />
         <main className="flex-grow p-4 sm:p-6 md:p-8">

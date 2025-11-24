@@ -23,21 +23,21 @@ export default function AdminSidebar({ isCollapsed, onToggle }: AdminSidebarProp
         <TooltipProvider>
             <aside 
                 className={cn(
-                    "fixed inset-y-0 left-0 z-40 h-screen flex-col border-r bg-card/60 backdrop-blur-lg transition-all duration-300 ease-in-out hidden sm:flex",
+                    "fixed inset-y-0 right-0 z-40 h-screen flex-col border-l bg-card/60 backdrop-blur-lg transition-all duration-300 ease-in-out hidden sm:flex",
                     isCollapsed ? "w-16" : "w-64"
                 )}
             >
                 <div className="flex h-16 shrink-0 items-center justify-between px-4">
-                    <div className={cn("flex items-center gap-2 font-semibold transition-all", !isCollapsed && "ml-2")}>
+                    <Button variant="ghost" size="icon" onClick={onToggle}>
+                        {isCollapsed ? <PanelLeftClose /> : <PanelRightClose />}
+                        <span className="sr-only">{isCollapsed ? 'گسترش نوار کناری' : 'جمع کردن نوار کناری'}</span>
+                    </Button>
+                    <div className={cn("flex items-center gap-2 font-semibold transition-all", !isCollapsed && "mr-2")}>
                         <NawaBookLogo className="h-8 w-8 text-primary" />
                         <span className={cn("text-xl transition-opacity duration-200", isCollapsed ? "opacity-0 w-0" : "opacity-100")}>
                           کتاب نوا
                         </span>
                     </div>
-                    <Button variant="ghost" size="icon" onClick={onToggle}>
-                        {isCollapsed ? <PanelRightClose /> : <PanelLeftClose />}
-                        <span className="sr-only">{isCollapsed ? 'گسترش نوار کناری' : 'جمع کردن نوار کناری'}</span>
-                    </Button>
                 </div>
                 <NavContent isCollapsed={isCollapsed} />
             </aside>
