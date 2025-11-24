@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { Bell, Menu, PanelLeftClose, PanelRightClose, Search } from 'lucide-react';
+import { Bell, Menu, PanelLeftClose, PanelRightClose, Search, User, Settings, LogOut, ArrowRight, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -74,23 +74,51 @@ export default function AdminHeader({ isSidebarCollapsed, toggleSidebar }: { isS
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                <Avatar className="h-8 w-8">
+              <Button variant="ghost" className="relative h-9 w-9 rounded-full">
+                <Avatar className="h-9 w-9">
                   <AvatarImage src="https://picsum.photos/seed/admin-avatar/100/100" alt="@admin" />
                   <AvatarFallback>A</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" dir="rtl">
-              <DropdownMenuLabel>حساب کاربری من</DropdownMenuLabel>
+            <DropdownMenuContent 
+              align="end" 
+              dir="rtl"
+              className="w-56 rounded-xl p-2 bg-popover shadow-lg border-border/50 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95"
+            >
+              <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col space-y-1 p-2">
+                  <p className="text-sm font-medium leading-none">مدیر سیستم</p>
+                  <p className="text-xs leading-none text-muted-foreground">
+                    admin@booknova.com
+                  </p>
+                </div>
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                  <Link href="/admin/settings">تنظیمات</Link>
+              <DropdownMenuItem asChild className="cursor-pointer rounded-lg">
+                  <Link href="/" className="flex items-center gap-2">
+                    <Home className="h-4 w-4" />
+                    <span>بازگشت به وبسایت</span>
+                  </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>پشتیبانی</DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer rounded-lg">
+                  <Link href="/profile" className="flex items-center gap-2">
+                    <User className="h-4 w-4" />
+                    <span>پروفایل من</span>
+                  </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild className="cursor-pointer rounded-lg">
+                  <Link href="/admin/settings" className="flex items-center gap-2">
+                    <Settings className="h-4 w-4" />
+                    <span>تنظیمات</span>
+                  </Link>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                  <Link href="/">خروج</Link>
+              <DropdownMenuItem asChild className="cursor-pointer rounded-lg text-destructive focus:text-destructive focus:bg-destructive/10">
+                   <Link href="/login" className="flex items-center gap-2">
+                    <LogOut className="h-4 w-4" />
+                    <span>خروج از حساب</span>
+                  </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
