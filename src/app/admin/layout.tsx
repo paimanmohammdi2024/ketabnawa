@@ -1,5 +1,4 @@
 'use client';
-import type { Metadata } from 'next';
 import AdminSidebar from '@/components/admin/sidebar';
 import AdminHeader from '@/components/admin/header';
 import * as React from 'react';
@@ -13,12 +12,12 @@ export default function AdminLayout({
   const [isCollapsed, setIsCollapsed] = React.useState(false);
   
   return (
-    <div className="flex min-h-screen w-full bg-secondary/30" dir="rtl">
+    <div className="flex min-h-screen w-full flex-row-reverse bg-secondary/30" dir="rtl">
       <AdminSidebar isCollapsed={isCollapsed} onToggle={() => setIsCollapsed(!isCollapsed)} />
       <div className={cn("flex flex-1 flex-col transition-all duration-300 ease-in-out",
-         isCollapsed ? "sm:ml-16" : "sm:ml-64"
+         isCollapsed ? "mr-20" : "mr-[260px]"
       )}>
-        <AdminHeader />
+        <AdminHeader isSidebarCollapsed={isCollapsed} />
         <main className="flex-grow p-4 sm:p-6 md:p-8">
           {children}
         </main>

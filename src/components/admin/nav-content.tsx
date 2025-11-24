@@ -49,7 +49,7 @@ const NavLink = ({ item, pathname, isCollapsed }: { item: typeof navItems[0], pa
          </>
     );
     const commonClasses = cn(
-        "flex items-center justify-center gap-3 rounded-lg text-muted-foreground transition-all h-10",
+        "flex items-center gap-3 rounded-lg text-muted-foreground transition-all h-10",
         "hover:text-foreground hover:bg-accent/20 hover:shadow-[0_0_15px_hsl(var(--primary)/0.5)]",
         isActive && "bg-accent/20 text-accent-foreground shadow-[0_0_15px_hsl(var(--primary)/0.5)]",
         isCollapsed ? "w-10 justify-center" : "w-full justify-start px-3"
