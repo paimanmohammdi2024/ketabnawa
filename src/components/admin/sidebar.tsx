@@ -4,21 +4,15 @@ import * as React from 'react';
 import {
   TooltipProvider,
 } from '@/components/ui/tooltip';
-import { Button } from '@/components/ui/button';
 import { NawaBookLogo } from '@/components/icons';
-import {
-  PanelLeftClose,
-  PanelRightClose
-} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import NavContent from './nav-content';
 
 interface AdminSidebarProps {
     isCollapsed: boolean;
-    onToggle: () => void;
 }
 
-export default function AdminSidebar({ isCollapsed, onToggle }: AdminSidebarProps) {
+export default function AdminSidebar({ isCollapsed }: AdminSidebarProps) {
     return (
         <TooltipProvider>
             <aside 
@@ -27,17 +21,13 @@ export default function AdminSidebar({ isCollapsed, onToggle }: AdminSidebarProp
                     isCollapsed ? "w-20" : "w-[260px]"
                 )}
             >
-                <div className="flex h-16 shrink-0 items-center justify-between px-4">
-                     <div className={cn("flex items-center gap-2 font-semibold transition-all", !isCollapsed && "ml-2")}>
+                <div className="flex h-16 shrink-0 items-center justify-center px-4">
+                     <div className={cn("flex items-center gap-2 font-semibold transition-all")}>
                         <NawaBookLogo className="h-8 w-8 text-primary" />
                         <span className={cn("text-xl transition-opacity duration-200", isCollapsed ? "opacity-0 w-0" : "opacity-100")}>
                           کتاب نوا
                         </span>
                     </div>
-                    <Button variant="ghost" size="icon" onClick={onToggle}>
-                        {isCollapsed ? <PanelRightClose /> : <PanelLeftClose />}
-                        <span className="sr-only">{isCollapsed ? 'گسترش نوار کناری' : 'جمع کردن نوار کناری'}</span>
-                    </Button>
                 </div>
                 <NavContent isCollapsed={isCollapsed} />
             </aside>
