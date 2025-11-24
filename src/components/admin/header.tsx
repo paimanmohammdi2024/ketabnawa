@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { Bell } from 'lucide-react';
+import { Bell, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -12,17 +12,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import NavContent from '@/components/admin/nav-content';
+
 
 const getPageTitle = (pathname: string) => {
-    if (pathname.includes('/admin/dashboard')) return 'Dashboard';
-    if (pathname.includes('/admin/books')) return 'Books';
-    if (pathname.includes('/admin/audiobooks')) return 'Audiobooks';
-    if (pathname.includes('/admin/categories')) return 'Categories';
-    if (pathname.includes('/admin/users')) return 'Users';
-    if (pathname.includes('/admin/publishers')) return 'Publishers';
-    if (pathname.includes('/admin/analytics')) return 'Analytics';
-    if (pathname.includes('/admin/settings')) return 'Settings';
-    return 'Admin';
+    if (pathname.includes('/admin/dashboard')) return 'داشبورد';
+    if (pathname.includes('/admin/books')) return 'کتاب‌ها';
+    if (pathname.includes('/admin/audiobooks')) return 'کتاب‌های صوتی';
+    if (pathname.includes('/admin/categories')) return 'دسته‌بندی‌ها';
+    if (pathname.includes('/admin/users')) return 'کاربران';
+    if (pathname.includes('/admin/publishers')) return 'ناشران';
+    if (pathname.includes('/admin/analytics')) return 'تحلیل‌ها';
+    if (pathname.includes('/admin/settings')) return 'تنظیمات';
+    return 'ادمین';
 };
 
 
@@ -31,14 +34,26 @@ export default function AdminHeader() {
   const title = getPageTitle(pathname);
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 md:px-6">
-       <div className="flex-1 sm:hidden" /> {/* Spacer for mobile menu button */}
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/60 sm:px-6">
+       <div className="sm:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button size="icon" variant="outline">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">باز کردن منو</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="sm:max-w-xs bg-card/80 backdrop-blur-xl border-none p-0">
+                <NavContent isMobile={true} />
+            </SheetContent>
+          </Sheet>
+       </div>
        <h1 className="flex-1 text-xl font-semibold">{title}</h1>
       <div className="flex items-center gap-4">
         <ThemeToggle />
         <Button variant="ghost" size="icon" className="rounded-full">
           <Bell className="h-5 w-5" />
-          <span className="sr-only">Notifications</span>
+          <span className="sr-only">اعلان‌ها</span>
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -49,13 +64,13 @@ export default function AdminHeader() {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuContent align="end" dir="rtl">
+            <DropdownMenuLabel>حساب کاربری من</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuItem>تنظیمات</DropdownMenuItem>
+            <DropdownMenuItem>پشتیبانی</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem>خروج</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
