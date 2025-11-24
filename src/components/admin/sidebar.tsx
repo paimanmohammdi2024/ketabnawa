@@ -13,9 +13,12 @@ import {
 import { cn } from '@/lib/utils';
 import NavContent from './nav-content';
 
-export default function AdminSidebar() {
-    const [isCollapsed, setIsCollapsed] = React.useState(false);
+interface AdminSidebarProps {
+    isCollapsed: boolean;
+    onToggle: () => void;
+}
 
+export default function AdminSidebar({ isCollapsed, onToggle }: AdminSidebarProps) {
     return (
         <TooltipProvider>
             <aside 
@@ -31,7 +34,7 @@ export default function AdminSidebar() {
                           کتاب نوا
                         </span>
                     </div>
-                    <Button variant="ghost" size="icon" onClick={() => setIsCollapsed(!isCollapsed)}>
+                    <Button variant="ghost" size="icon" onClick={onToggle}>
                         {isCollapsed ? <PanelRightClose /> : <PanelLeftClose />}
                         <span className="sr-only">{isCollapsed ? 'گسترش نوار کناری' : 'جمع کردن نوار کناری'}</span>
                     </Button>

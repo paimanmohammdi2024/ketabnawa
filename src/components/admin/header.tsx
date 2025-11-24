@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Bell, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -43,7 +44,7 @@ export default function AdminHeader() {
                 <span className="sr-only">باز کردن منو</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="sm:max-w-xs bg-card/80 backdrop-blur-xl border-none p-0">
+            <SheetContent side="right" className="sm:max-w-xs bg-card/80 backdrop-blur-xl border-none p-0">
                 <NavContent isMobile={true} />
             </SheetContent>
           </Sheet>
@@ -67,10 +68,14 @@ export default function AdminHeader() {
           <DropdownMenuContent align="end" dir="rtl">
             <DropdownMenuLabel>حساب کاربری من</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>تنظیمات</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+                <Link href="/admin/settings">تنظیمات</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem>پشتیبانی</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>خروج</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+                <Link href="/">خروج</Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
