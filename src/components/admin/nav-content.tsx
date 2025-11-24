@@ -53,9 +53,9 @@ const NavLink = ({ item, pathname, isCollapsed }: { item: typeof navItems[0], pa
          </>
     );
     const commonClasses = cn(
-        "flex items-center gap-4 rounded-none transition-colors duration-200 ease-in-out relative",
+        "flex items-center rounded-none transition-colors duration-200 ease-in-out relative",
         "hover:bg-accent/10",
-        isCollapsed ? "w-10 h-10 justify-center" : "w-full justify-start px-4 py-3"
+        isCollapsed ? "w-10 h-10 justify-center" : "w-full justify-start px-4 py-3 gap-4"
     );
 
     if (isCollapsed) {
@@ -128,12 +128,12 @@ export default function NavContent({ isCollapsed = false, isMobile = false }: Na
 
   return (
     <TooltipProvider>
-      <nav className="flex flex-col items-stretch gap-1 py-4 flex-grow">
+      <nav className="flex flex-col items-center gap-1 py-4 flex-grow">
         {navItems.map((item) => (
           <NavLink key={item.href} item={item} pathname={pathname} isCollapsed={isCollapsed} />
         ))}
       </nav>
-      <div className="mt-auto border-t p-2">
+      <div className="mt-auto border-t p-2 flex flex-col items-center">
         <NavLink item={settingsItem} pathname={pathname} isCollapsed={isCollapsed} />
       </div>
     </TooltipProvider>
