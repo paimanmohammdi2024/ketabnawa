@@ -20,6 +20,11 @@ export const popularAudiobooks: Book[] = [
   { id: 3, title: 'سایبریا', author: 'کنجی تاناکا', price: '$۱۴.۹۹', coverImageId: 'audiobook-3' },
   { id: 4, title: 'نقطه صفر', author: 'لیلا چن', price: '$۲۹.۹۹', coverImageId: 'audiobook-4' },
   { id: 5, title: 'رویاهای مصنوعی', author: 'مارکوس ونس', price: '$۲۲.۵۰', coverImageId: 'audiobook-5' },
+  { id: 6, title: 'معماری حافظه', author: 'ایلای ونس', price: '$۱۹.۹۹', coverImageId: 'audiobook-6' },
+  { id: 7, title: 'شبکه زمزمه', author: 'سوفیا لیند', price: '$۲۴.۹۹', coverImageId: 'audiobook-7' },
+  { id: 8, title: 'افق رویداد', author: 'کالب ریس', price: '$۱۴.۹۹', coverImageId: 'audiobook-8' },
+  { id: 9, title: 'پارادوکس سازنده', author: 'نورا جونز', price: '$۲۹.۹۹', coverImageId: 'audiobook-9' },
+  { id: 10, title: 'شهر شیشه‌ای', author: 'دیوید چن', price: '$۲۲.۵۰', coverImageId: 'audiobook-10' },
 ];
 
 export const latestEbooks: Book[] = [

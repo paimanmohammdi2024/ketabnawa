@@ -31,6 +31,36 @@
       "imageHint": "vibrant colors"
     },
     {
+      "id": "audiobook-6",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1642499249841-bb9f9469e453?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMG1lbW9yeXxlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract memory"
+    },
+    {
+      "id": "audiobook-7",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1763739906691-228172a7ba22?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGlzcGVyJTIwbmV0d29ya3xlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "whisper network"
+    },
+    {
+      "id": "audiobook-8",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1761055277750-69abef51a663?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZXZlbnQlMjBob3Jpem9ufGVufDB8fHx8MTc2NDA0OTEzN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event horizon"
+    },
+    {
+      "id": "audiobook-9",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1599602567902-d68317d70429?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjcmVhdG9yJTIwcGFyYWRveHxlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "creator paradox"
+    },
+    {
+      "id": "audiobook-10",
+      "description": "Abstract cover for an audiobook",
+      "imageUrl": "https://images.unsplash.com/photo-1612669309201-deee9c49fb46?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnbGFzcyUyMGNpdHl8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "glass city"
+    },
+    {
       "id": "ebook-1",
       "description": "Cover for an ebook",
       "imageUrl": "https://images.unsplash.com/photo-1717564954563-e0263d335695?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYW50YXN5JTIwbGFuZHNjYXBlfGVufDB8fHx8MTc2MzgwOTAyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
