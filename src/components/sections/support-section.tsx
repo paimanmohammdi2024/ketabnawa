@@ -15,9 +15,9 @@ export default function SupportSection() {
 
       <Button
         aria-label="پشتیبانی"
-        className="fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow md:h-16 md:w-16 animate-bounce-in"
+        className="fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow animate-bounce-in"
       >
-        <Headset className="h-6 w-6 md:h-7 md:w-7" />
+        <Headset className="h-7 w-7" />
         <span className="sr-only">پشتیبانی</span>
       </Button>
     </>
