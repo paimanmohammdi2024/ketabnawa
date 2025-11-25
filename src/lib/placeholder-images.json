@@ -107,6 +107,96 @@
       "description": "Cover for an ebook",
       "imageUrl": "https://images.unsplash.com/photo-1730382624761-af8112d26209?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVzaW5lc3MlMjBjaGFydHxlbnwwfHx8fDE3NjM3ODExMjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business chart"
+    },
+    {
+      "id": "scroll-1",
+      "imageUrl": "https://images.unsplash.com/photo-1612046312687-8e4a89885b59?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib29rJTIwY292ZXJ8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "book cover",
+      "description": "Placeholder for The Midnight Library"
+    },
+    {
+      "id": "scroll-2",
+      "imageUrl": "https://images.unsplash.com/photo-1626572458428-2a3a19a58579?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkZXNlcnQlMjBwbGFuZXR8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "desert planet",
+      "description": "Placeholder for Dune"
+    },
+    {
+      "id": "scroll-3",
+      "imageUrl": "https://images.unsplash.com/photo-1544292129-3a3a228a07d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkdXN0JTIwYm93bHxlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "dust bowl",
+      "description": "Placeholder for The Four Winds"
+    },
+    {
+      "id": "scroll-4",
+      "imageUrl": "https://images.unsplash.com/photo-1520607162513-77705cde5e72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjB0aGlua2luZ3xlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "man thinking",
+      "description": "Placeholder for Atomic Habits"
+    },
+    {
+      "id": "scroll-5",
+      "imageUrl": "https://images.unsplash.com/photo-1593078332247-498524434c4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzeW50aGV0aWMlMjBmcmllbmR8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "synthetic friend",
+      "description": "Placeholder for Klara and the Sun"
+    },
+    {
+      "id": "scroll-6",
+      "imageUrl": "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwYXN0ZWwlMjBncmFkaWVudHxlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "pastel gradient",
+      "description": "Placeholder for The Vanishing Half"
+    },
+    {
+      "id": "scroll-7",
+      "imageUrl": "https://images.unsplash.com/photo-1563821735198-4654ac918804?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxteXRoaWNhbCUyMGdvZGRlc3N8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "mythical goddess",
+      "description": "Placeholder for Circe"
+    },
+    {
+      "id": "scroll-8",
+      "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdGFjayUyMG9mJTIwYm9va3N8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "stack books",
+      "description": "Placeholder for Educated"
+    },
+    {
+      "id": "scroll-9",
+      "imageUrl": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYXJzaCUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "marsh landscape",
+      "description": "Placeholder for Where the Crawdads Sing"
+    },
+    {
+      "id": "scroll-10",
+      "imageUrl": "https://images.unsplash.com/photo-1518779574347-a8593a11e8f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMGNvdXBsZXxlbnwwfHx8fDE3NjQwNDkxMzd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "young couple",
+      "description": "Placeholder for Normal People"
+    },
+    {
+      "id": "scroll-11",
+      "imageUrl": "https://images.unsplash.com/photo-1508344589780-774776512338?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBpbiUyMHNoYWRvd3N8ZW58MHx8fHwxNzY0MDQ5MTM3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "man shadows",
+      "description": "Placeholder for The Silent Patient"
+    },
+    {
+      "id": "scroll-12",
+      "imageUrl": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhc3Ryb25hdXQlMjBpbiUyMHNwYWNlfGVufDB8fHx8MTc2NDA0OTEzN3ww&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "astronaut space",
+      "description": "Placeholder for Project Hail Mary"
+    },
+    {
+      "id": "scroll-13",
+      "imageUrl": "https://images.unsplash.com/photo-1531341062226-4217f2587093?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmb3Jlc3QlMjBwYXRoJTIwd2l0aCUyMGxpZ2h0fGVufDB8fHx8MTc2NDA0OTEzN3ww&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "forest path",
+      "description": "Placeholder for Anxious People"
+    },
+    {
+      "id": "scroll-14",
+      "imageUrl": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxncm91cCUyMG9mJTIwcGVvcGxlfGVufDB8fHx8MTc2NDA0OTEzN3ww&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "group people",
+      "description": "Placeholder for The Guest List"
+    },
+    {
+      "id": "scroll-15",
+      "imageUrl": "https://images.unsplash.com/photo-1474631245212-32dc3c84105e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYXAlMjBvZiUyMHRoZSUyMHdvcmxkfGVufDB8fHx8MTc2NDA0OTEzN3ww&ixlib=rb-4.1.0&q=80&w=400",
+      "imageHint": "map world",
+      "description": "Placeholder for Sapiens"
     }
   ]
 }
