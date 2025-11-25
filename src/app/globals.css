@@ -96,18 +96,4 @@
   .scroll-container::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
-  @keyframes scroll-rtl {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
-  }
-  .animate-scroll-rtl {
-    animation: scroll-rtl 80s linear infinite;
-  }
-  @keyframes scroll-ltr {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
-  }
-  .animate-scroll-ltr {
-    animation: scroll-ltr 80s linear infinite;
-  }
 }

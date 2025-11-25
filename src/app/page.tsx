@@ -4,7 +4,6 @@ import HeroSection from '@/components/sections/hero-section';
 import PopularAudiobooksSection from '@/components/sections/popular-audiobooks-section';
 import LatestEbooksSection from '@/components/sections/latest-ebooks-section';
 import CategoriesSection from '@/components/sections/categories-section';
-import AutoScrollCarousel from '@/components/sections/auto-scroll-carousel';
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <HeroSection />
-        <AutoScrollCarousel />
         <PopularAudiobooksSection />
         <LatestEbooksSection />
         <CategoriesSection />
