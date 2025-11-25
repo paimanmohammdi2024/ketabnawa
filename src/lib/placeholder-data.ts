@@ -37,7 +37,7 @@ export const latestEbooks: Book[] = [
   { id: 5, title: 'جنگل اسرار', author: 'الارا ونس', price: '$۸.۵۰', coverImageId: 'ebook-5' },
   { id: 6, title: 'بیمار خاموش', author: 'الکس مایکلیدیس', price: '$۱۱.۲۵', coverImageId: 'ebook-6' },
   { id: 7, title: 'اوردرایو استارلایت', author: 'زین هریس', price: '$۱۰.۹۹', coverImageId: 'ebook-7' },
-  { id: 8, title: 'ذهنیت رشد', author: 'کارول دوک', price: '$۱۴.۵۰', coverImageId: 'ebook-8' },
+  { id: 8, 'title': 'ذهنیت رشد', author: 'کارول دوک', price: '$۱۴.۵۰', coverImageId: 'ebook-8' },
 ];
 
 export const categories: Category[] = [
@@ -47,4 +47,21 @@ export const categories: Category[] = [
   { name: 'عاشقانه', icon: Heart },
   { name: 'کسب و کار', icon: Briefcase },
   { name: 'آموزش', icon: GraduationCap },
+];
+
+export const scrollingBooks: Book[] = [
+    { id: 1, title: 'Book Title 1', author: 'Author 1', price: '$9.99', coverImageId: 'scroll-1' },
+    { id: 2, title: 'Book Title 2', author: 'Author 2', price: '$12.99', coverImageId: 'scroll-2' },
+    { id: 3, title: 'Book Title 3', author: 'Author 3', price: '$7.99', coverImageId: 'scroll-3' },
+    { id: 4, title: 'Book Title 4', author: 'Author 4', price: '$15.00', coverImageId: 'scroll-4' },
+    { id: 5, title: 'Book Title 5', author: 'Author 5', price: '$8.50', coverImageId: 'scroll-5' },
+    { id: 6, title: 'Book Title 6', author: 'Author 6', price: '$11.25', coverImageId: 'scroll-6' },
+    { id: 7, title: 'Book Title 7', author: 'Author 7', price: '$10.99', coverImageId: 'scroll-7' },
+    { id: 8, title: 'Book Title 8', author: 'Author 8', price: '$14.50', coverImageId: 'scroll-8' },
+    { id: 9, title: 'Book Title 9', author: 'Author 9', price: '$19.99', coverImageId: 'scroll-9' },
+    { id: 10, title: 'Book Title 10', author: 'Author 10', price: '$22.50', coverImageId: 'scroll-10' },
+    { id: 11, title: 'Book Title 11', author: 'Author 11', price: '$18.00', coverImageId: 'scroll-11' },
+    { id: 12, title: 'Book Title 12', author: 'Author 12', price: '$20.00', coverImageId: 'scroll-12' },
+    { id: 13, title: 'Book Title 13', author: 'Author 13', price: '$9.99', coverImageId: 'scroll-13' },
+    { id: 14, title: 'Book Title 14', author: 'Author 14', price: '$12.99', coverImageId: 'scroll-14' },
 ];

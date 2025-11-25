@@ -96,4 +96,21 @@
   .scroll-container::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
+
+  .scroller-animation-rtl {
+    animation: scroll-rtl 80s linear infinite;
+  }
+  .scroller-animation-ltr {
+    animation: scroll-ltr 80s linear infinite;
+  }
+  
+  @keyframes scroll-rtl {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @keyframes scroll-ltr {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+  }
 }
