@@ -6,7 +6,7 @@ import { NawaBookLogo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Search, LogIn, UserPlus } from 'lucide-react';
+import { Menu, Search, LogIn } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const navLinks = [
@@ -87,13 +87,7 @@ export default function Header() {
           <Button asChild variant="ghost" className="rounded-full !px-3">
             <Link href="/login">
               <LogIn className="ml-2 h-4 w-4" />
-              ورود
-            </Link>
-          </Button>
-          <Button asChild className="rounded-full hidden sm:flex">
-            <Link href="/register">
-              <UserPlus className="ml-2 h-4 w-4" />
-              ثبت‌نام
+              ورود / ثبت‌نام
             </Link>
           </Button>
         </div>
