@@ -5,6 +5,7 @@ import PopularAudiobooksSection from '@/components/sections/popular-audiobooks-s
 import LatestEbooksSection from '@/components/sections/latest-ebooks-section';
 import CategoriesSection from '@/components/sections/categories-section';
 import AutoScrollCarousel from '@/components/sections/auto-scroll-carousel';
+import SupportSection from '@/components/sections/support-section';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <PopularAudiobooksSection />
         <LatestEbooksSection />
         <CategoriesSection />
+        <SupportSection />
       </main>
       <Footer />
     </div>
