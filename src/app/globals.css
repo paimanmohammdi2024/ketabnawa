@@ -96,21 +96,38 @@
   .scroll-container::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
+}
 
-  .scroller-animation-rtl {
+@layer utilities {
+  .animate-scroll-rtl {
     animation: scroll-rtl 80s linear infinite;
+    animation-play-state: paused;
   }
-  .scroller-animation-ltr {
+  .animate-scroll-ltr {
     animation: scroll-ltr 80s linear infinite;
+    animation-play-state: paused;
   }
-  
+
+  .group:hover .animate-scroll-rtl,
+  .group:hover .animate-scroll-ltr {
+    animation-play-state: running;
+  }
+
   @keyframes scroll-rtl {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   @keyframes scroll-ltr {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0%); }
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
   }
 }
