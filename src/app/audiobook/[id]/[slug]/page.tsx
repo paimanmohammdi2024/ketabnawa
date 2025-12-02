@@ -215,7 +215,7 @@ export default function AudiobookDetailsPage({ params }: { params: { id: string;
       ],
       sampleAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     };
-  }, [params.id]);
+  }, [params]);
 
   const isInLibrary = useMemo(() => libraryItems.some(item => item.id === audiobook?.id), [libraryItems, audiobook]);
 
