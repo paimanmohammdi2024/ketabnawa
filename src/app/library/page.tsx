@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Book,
   Headphones,
@@ -8,7 +8,6 @@ import {
   BookX,
   Search,
   ChevronDown,
-  ListFilter,
   LayoutGrid,
   BookOpen,
 } from 'lucide-react';
@@ -22,12 +21,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import { myLibraryBooks, myLibraryAudiobooks } from '@/lib/placeholder-data';
 import LibraryItemCard from '@/components/library/LibraryItemCard';
-import type { LibraryBook, LibraryAudiobook } from '@/lib/placeholder-data';
+import type { LibraryItem } from '@/store/libraryStore';
+import { useLibraryStore } from '@/store/libraryStore';
+
 
 // --- EMPTY STATE COMPONENT ---
 const EmptyLibrary = () => (
@@ -51,13 +50,14 @@ const EmptyLibrary = () => (
 
 // --- MAIN LIBRARY PAGE ---
 export default function LibraryPage() {
+  const { items: allItems } = useLibraryStore();
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('جدیدترین');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [activeTab, setActiveTab] = useState('all');
+  const [isClient, setIsClient] = useState(false);
 
-  const allItems: (LibraryBook | LibraryAudiobook)[] = useMemo(() => {
-    return [...myLibraryBooks, ...myLibraryAudiobooks];
+  useEffect(() => {
+    setIsClient(true);
   }, []);
 
   const filteredItems = useMemo(() => {
@@ -171,21 +171,22 @@ export default function LibraryPage() {
                         </DropdownMenu>
                      </div>
                 </div>
-
-                <TabsContent value={activeTab} className="mt-8">
-                     {filteredItems.length === 0 ? (
-                        <EmptyLibrary />
-                    ) : (
-                        <div className={cn(
-                            "grid gap-6 md:gap-8",
-                            viewMode === 'grid' ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4" : "grid-cols-1"
-                        )}>
-                            {filteredItems.map(item => (
-                                <LibraryItemCard key={`${item.type}-${item.id}`} item={item} />
-                            ))}
-                        </div>
-                    )}
-                </TabsContent>
+                
+                {isClient && (
+                  <TabsContent value={activeTab} className="mt-8">
+                      {filteredItems.length === 0 ? (
+                          <EmptyLibrary />
+                      ) : (
+                          <div className={cn(
+                              "grid gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                          )}>
+                              {filteredItems.map(item => (
+                                  <LibraryItemCard key={`${item.type}-${item.id}`} item={item} />
+                              ))}
+                          </div>
+                      )}
+                  </TabsContent>
+                )}
             </Tabs>
         </div>
 

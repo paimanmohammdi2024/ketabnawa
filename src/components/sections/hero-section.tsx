@@ -13,7 +13,7 @@ export default function HeroSection() {
         </p>
         <div className="mt-10">
           <Button size="lg" className="rounded-full text-lg px-8 py-6" asChild>
-            <Link href="/books">مرور کتابخانه</Link>
+            <Link href="/library">مرور کتابخانه</Link>
           </Button>
         </div>
       </div>

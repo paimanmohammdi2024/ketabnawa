@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -19,6 +19,8 @@ import {
   Tags,
   CheckCircle,
   Sparkles,
+  Bookmark,
+  BookCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,29 +36,13 @@ import {
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { cn } from '@/lib/utils';
+import { useLibraryStore } from '@/store/libraryStore';
+import { latestEbooks, popularAudiobooks } from '@/lib/placeholder-data';
+import type { LibraryItem } from '@/store/libraryStore';
+
+const allBooks = [...latestEbooks, ...popularAudiobooks];
 
 // --- DUMMY DATA ---
-const bookDetails = {
-  id: 12345,
-  title: 'قدرت عادت',
-  author: 'چارلز داهیگ',
-  slug: 'قدرت-عادت',
-  description: 'چرا ما آنچه را انجام می‌دهیم در زندگی و کسب‌وکار انجام می‌دهیم؟',
-  longDescription:
-    'در کتاب «قدرت عادت»، چارلز داهیگ، خبرنگار برنده جایزه پولیتزر، ما را به دنیای هیجان‌انگیز اکتشافات علمی می‌برد که توضیح می‌دهند چرا عادت‌ها وجود دارند و چگونه می‌توان آن‌ها را تغییر داد. با تلفیقی از تحقیقات دقیق و روایت‌های جذاب، داهیگ درک جدیدی از طبیعت انسان و پتانسیل آن برای تحول ارائه می‌دهد.\n\nاین کتاب به سه بخش تقسیم شده است: ابتدا به بررسی چگونگی شکل‌گیری عادت‌ها در زندگی افراد می‌پردازد. سپس عادت‌های سازمان‌ها و شرکت‌های موفق را تحلیل می‌کند و در نهایت، به عادت‌های جوامع و تأثیرات گسترده‌تر آن‌ها می‌پردازد. داهیگ با استفاده از مثال‌های واقعی از شرکت‌هایی مانند پروکتر اند گمبل، استارباکس، و تارگت، و همچنین داستان‌هایی از جنبش حقوق مدنی و زندگی مارتین لوتر کینگ جونیور، نشان می‌دهد که چگونه درک قدرت عادت‌ها می‌تواند کلید موفقیت در ورزش، کسب‌وکار و زندگی شخصی باشد.',
-  category: 'روانشناسی و خودسازی',
-  publishYear: 2012,
-  pages: 371,
-  publisher: 'نشر نوین',
-  language: 'فارسی (ترجمه)',
-  rating: 4.8,
-  reviewCount: 1250,
-  price: 250000,
-  discountPrice: 199000,
-  imageUrl: 'https://picsum.photos/seed/book-power-habit/600/900',
-  isbn: '978-600-8738-33-8',
-};
-
 const userReviews = [
   {
     id: 1,
@@ -144,8 +130,58 @@ const BookSpecItem = ({ icon: Icon, label, value }: { icon: React.ElementType, l
 // --- MAIN BOOK DETAILS PAGE ---
 
 export default function BookDetailsPage({ params }: { params: { id: string; slug: string } }) {
-  // In a real app, you would fetch data based on params.id
-  const book = bookDetails;
+  const { items: libraryItems, addToLibrary, removeFromLibrary } = useLibraryStore();
+
+  const book = useMemo(() => {
+    const foundBook = allBooks.find(b => b.id.toString() === params.id);
+    if (!foundBook) return null;
+    return {
+      ...foundBook,
+      longDescription: 'در کتاب «قدرت عادت»، چارلز داهیگ، خبرنگار برنده جایزه پولیتزر، ما را به دنیای هیجان‌انگیز اکتشافات علمی می‌برد که توضیح می‌دهند چرا عادت‌ها وجود دارند و چگونه می‌توان آن‌ها را تغییر داد. با تلفیقی از تحقیقات دقیق و روایت‌های جذاب، داهیگ درک جدیدی از طبیعت انسان و پتانسیل آن برای تحول ارائه می‌دهد.\n\nاین کتاب به سه بخش تقسیم شده است: ابتدا به بررسی چگونگی شکل‌گیری عادت‌ها در زندگی افراد می‌پردازد. سپس عادت‌های سازمان‌ها و شرکت‌های موفق را تحلیل می‌کند و در نهایت، به عادت‌های جوامع و تأثیرات گسترده‌تر آن‌ها می‌پردازد. داهیGیگ با استفاده از مثال‌های واقعی از شرکت‌هایی مانند پروکتر اند گمبل، استارباکس، و تارگت، و همچنین داستان‌هایی از جنبش حقوق مدنی و زندگی مارتین لوتر کینگ جونیور، نشان می‌دهد که چگونه درک قدرت عادت‌ها می‌تواند کلید موفقیت در ورزش، کسب‌وکار و زندگی شخصی باشد.',
+      publishYear: 2012,
+      pages: 371,
+      publisher: 'نشر نوین',
+      language: 'فارسی (ترجمه)',
+      rating: 4.8,
+      reviewCount: 1250,
+      discountPrice: 199000,
+      imageUrl: `https://picsum.photos/seed/${foundBook.coverImageId}/600/900`,
+      isbn: '978-600-8738-33-8',
+    }
+  }, [params.id]);
+
+  const isInLibrary = useMemo(() => libraryItems.some(item => item.id === book?.id), [libraryItems, book]);
+
+  const handleLibraryToggle = () => {
+    if (!book) return;
+
+    if (isInLibrary) {
+      removeFromLibrary(book.id);
+    } else {
+      const libraryItem: LibraryItem = {
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        coverImageId: book.coverImageId,
+        progress: 0,
+        type: 'ebook',
+        category: book.category,
+      };
+      addToLibrary(libraryItem);
+    }
+  };
+  
+  if (!book) {
+    return (
+        <div className="flex min-h-screen flex-col bg-background font-body">
+            <Header />
+            <main className="flex-grow flex items-center justify-center">
+                <p>کتاب مورد نظر یافت نشد.</p>
+            </main>
+            <Footer />
+        </div>
+    )
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-background font-body">
@@ -204,7 +240,7 @@ export default function BookDetailsPage({ params }: { params: { id: string; slug
                       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                           <div>
                             <span className="text-sm text-muted-foreground line-through">
-                              {book.price.toLocaleString('fa-IR')} تومان
+                              {parseInt(book.price.replace('$', '')).toLocaleString('fa-IR')} تومان
                             </span>
                             <div className="flex items-baseline gap-2">
                                <span className="text-3xl font-bold text-primary">
@@ -225,11 +261,18 @@ export default function BookDetailsPage({ params }: { params: { id: string; slug
                           </div>
                       </div>
                   </Card>
+
+                    <div className='flex flex-col sm:flex-row gap-3 mt-4'>
+                        <Button size="lg" variant={isInLibrary ? 'secondary' : 'outline'} className="w-full" onClick={handleLibraryToggle}>
+                           {isInLibrary ? <BookCheck className="ml-2 h-5 w-5" /> : <Bookmark className="ml-2 h-5 w-5" />}
+                           {isInLibrary ? 'موجود در کتابخانه' : 'افزودن به کتابخانه'}
+                        </Button>
+                    </div>
                   
                    <div className="flex items-center gap-4 mt-4">
                         <Button variant="ghost">
                             <Heart className="ml-2 h-5 w-5" />
-                            افزودن به کتابخانه
+                            افزودن به علاقه‌مندی‌ها
                         </Button>
                         <Button variant="ghost">
                             <Share2 className="ml-2 h-5 w-5" />

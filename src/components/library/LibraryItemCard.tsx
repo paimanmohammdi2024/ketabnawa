@@ -2,21 +2,20 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { BookOpen, Headphones, MoreVertical } from 'lucide-react';
-import type { LibraryBook, LibraryAudiobook } from '@/lib/placeholder-data';
+import { BookOpen, Headphones, MoreVertical, Trash2 } from 'lucide-react';
+import type { LibraryItem } from '@/store/libraryStore';
+import { useLibraryStore } from '@/store/libraryStore';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ProgressBar } from '@/components/ui/progress'; // Assuming this new component exists
+import { ProgressBar } from '@/components/ui/progress';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-
-type LibraryItem = LibraryBook | LibraryAudiobook;
 
 interface LibraryItemCardProps {
   item: LibraryItem;
@@ -36,6 +35,7 @@ const slugify = (text: string): string => {
 };
 
 export default function LibraryItemCard({ item, className }: LibraryItemCardProps) {
+  const { removeFromLibrary } = useLibraryStore();
   const image = PlaceHolderImages.find((img) => img.id === item.coverImageId);
   const slug = slugify(item.title);
   const detailsHref = item.type === 'audiobook' ? `/audiobook/${item.id}/${slug}` : `/book/${item.id}/${slug}`;
@@ -81,7 +81,13 @@ export default function LibraryItemCard({ item, className }: LibraryItemCardProp
                 <DropdownMenuContent align="end" dir='rtl'>
                     <DropdownMenuItem>علامت‌گذاری به عنوان تمام شده</DropdownMenuItem>
                     <DropdownMenuItem>آرشیو کردن</DropdownMenuItem>
-                    <DropdownMenuItem className="text-destructive focus:text-destructive">حذف از کتابخانه</DropdownMenuItem>
+                    <DropdownMenuItem 
+                      className="text-destructive focus:text-destructive"
+                      onClick={() => removeFromLibrary(item.id)}
+                    >
+                      <Trash2 className="ml-2 h-4 w-4" />
+                      حذف از کتابخانه
+                    </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
           </div>

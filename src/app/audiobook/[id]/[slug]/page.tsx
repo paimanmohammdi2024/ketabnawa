@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -14,16 +14,15 @@ import {
   Heart,
   Share2,
   Bookmark,
-  BookHeadphones,
-  Sparkles,
   ShoppingBag,
+  Sparkles,
+  BookCheck,
 } from 'lucide-react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   Carousel,
   CarouselContent,
@@ -34,43 +33,16 @@ import {
 import { Slider } from '@/components/ui/slider';
 import { cn } from '@/lib/utils';
 import BookCard from '@/components/book-card';
+import { useLibraryStore, type LibraryItem } from '@/store/libraryStore';
+import { popularAudiobooks } from '@/lib/placeholder-data';
+
+
+const allAudiobooks = [...popularAudiobooks];
 
 // --- DUMMY DATA ---
-const audiobookDetails = {
-  id: 1,
-  title: 'ذهن دیجیتال',
-  slug: 'zehne-digital',
-  author: 'آروین اش',
-  narrator: 'صدای ماندگار',
-  duration: '۷ ساعت و ۲۳ دقیقه',
-  rating: 4.9,
-  reviewCount: 850,
-  price: '۲۹۹,۰۰۰',
-  category: 'علمی-تخیلی',
-  tags: ['آینده‌نگر', 'هوش مصنوعی', 'فناوری'],
-  coverImageId: 'audiobook-1',
-  description:
-    'در دنیایی که مرز بین انسان و ماشین در حال محو شدن است، یک برنامه‌نویس جوان کدی را کشف می‌کند که می‌تواند آگاهی را شبیه‌سازی کند. این کشف او را به سفری خطرناک در اعماق اخلاق، هویت و معنای واقعی انسان بودن می‌برد. «ذهن دیجیتال» یک کاوش هیجان‌انگیز در آینده احتمالی بشریت است.',
-  chapters: [
-    { id: 1, title: 'فصل اول: بیداری کد', duration: '۲۵:۱۴' },
-    { id: 2, title: 'فصل دوم: پژواک در شبکه', duration: '۳۱:۰۲' },
-    { id: 3, title: 'فصل سوم: شبح در ماشین', duration: '۲۸:۴۵' },
-    { id: 4, title: 'فصل چهارم: پارادوکس آگاهی', duration: '۳۵:۲۰' },
-    { id: 5, title: 'فصل پنجم: دیوار آتشین اخلاق', duration: '۲۹:۵۵' },
-    { id: 6, title: 'فصل ششم: فرار از سیلیس', duration: '۳۳:۱۰' },
-  ],
-  sampleAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-};
-
-const relatedAudiobooks = Array.from({ length: 10 }, (_, i) => ({
-    id: 100 + i,
-    title: `کتاب صوتی مرتبط ${i + 1}`,
-    author: `گوینده ${i + 1}`,
-    price: `${(i + 1) * 15},۰۰۰ تومان`,
-    coverImageId: `audiobook-${(i % 10) + 1}`,
-    type: 'audiobook' as const,
-    duration: `${Math.floor(i/2) + 2} ساعت و ${i * 15 % 60} دقیقه`,
-}));
+const userReviews = [
+    // ... same as book page
+];
 
 
 // --- SUB-COMPONENTS ---
@@ -221,7 +193,71 @@ const AudioPlayer = ({ src, coverImageId }: { src: string; coverImageId: string 
 // --- MAIN AUDIOBOOK DETAILS PAGE ---
 
 export default function AudiobookDetailsPage({ params }: { params: { id: string; slug: string } }) {
-  const audiobook = audiobookDetails;
+  const { items: libraryItems, addToLibrary, removeFromLibrary } = useLibraryStore();
+
+  const audiobook = useMemo(() => {
+    const foundBook = allAudiobooks.find(b => b.id.toString() === params.id);
+    if (!foundBook) return null;
+    return {
+      ...foundBook,
+      narrator: 'صدای ماندگار',
+      rating: 4.9,
+      reviewCount: 850,
+      tags: ['آینده‌نگر', 'هوش مصنوعی', 'فناوری'],
+      description: 'در دنیایی که مرز بین انسان و ماشین در حال محو شدن است، یک برنامه‌نویس جوان کدی را کشف می‌کند که می‌تواند آگاهی را شبیه‌سازی کند. این کشف او را به سفری خطرناک در اعماق اخلاق، هویت و معنای واقعی انسان بودن می‌برد. «ذهن دیجیتال» یک کاوش هیجان‌انگیز در آینده احتمالی بشریت است.',
+      chapters: [
+        { id: 1, title: 'فصل اول: بیداری کد', duration: '۲۵:۱۴' },
+        { id: 2, title: 'فصل دوم: پژواک در شبکه', duration: '۳۱:۰۲' },
+        { id: 3, title: 'فصل سوم: شبح در ماشین', duration: '۲۸:۴۵' },
+        { id: 4, title: 'فصل چهارم: پارادوکس آگاهی', duration: '۳۵:۲۰' },
+        { id: 5, title: 'فصل پنجم: دیوار آتشین اخلاق', duration: '۲۹:۵۵' },
+        { id: 6, title: 'فصل ششم: فرار از سیلیس', duration: '۳۳:۱۰' },
+      ],
+      sampleAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    };
+  }, [params.id]);
+
+  const isInLibrary = useMemo(() => libraryItems.some(item => item.id === audiobook?.id), [libraryItems, audiobook]);
+
+  const handleLibraryToggle = () => {
+    if (!audiobook) return;
+
+    if (isInLibrary) {
+      removeFromLibrary(audiobook.id);
+    } else {
+      const libraryItem: LibraryItem = {
+        id: audiobook.id,
+        title: audiobook.title,
+        author: audiobook.author,
+        coverImageId: audiobook.coverImageId,
+        progress: 0,
+        type: 'audiobook',
+        category: audiobook.category,
+        duration: audiobook.duration,
+      };
+      addToLibrary(libraryItem);
+    }
+  };
+
+  const relatedAudiobooks = useMemo(() => 
+    popularAudiobooks.filter(b => b.id !== audiobook?.id).map(book => ({ 
+        ...book, 
+        type: 'audiobook' as const
+    })),
+    [audiobook]
+  );
+  
+  if (!audiobook) {
+    return (
+        <div className="flex min-h-screen flex-col bg-background font-body">
+            <Header />
+            <main className="flex-grow flex items-center justify-center">
+                <p>کتاب صوتی مورد نظر یافت نشد.</p>
+            </main>
+            <Footer />
+        </div>
+    )
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-background font-body">
@@ -282,9 +318,9 @@ export default function AudiobookDetailsPage({ params }: { params: { id: string;
                        <ShoppingBag className="ml-2 h-5 w-5" />
                        خرید نسخه صوتی ({audiobook.price} تومان)
                     </Button>
-                     <Button size="lg" variant="outline" className="w-full">
-                        <Bookmark className="ml-2 h-5 w-5" />
-                        افزودن به کتابخانه
+                     <Button size="lg" variant={isInLibrary ? 'secondary' : 'outline'} className="w-full" onClick={handleLibraryToggle}>
+                        {isInLibrary ? <BookCheck className="ml-2 h-5 w-5" /> : <Bookmark className="ml-2 h-5 w-5" />}
+                        {isInLibrary ? 'موجود در کتابخانه' : 'افزودن به کتابخانه'}
                      </Button>
                   </div>
                    <div className="flex items-center gap-2 mt-4">
