@@ -133,8 +133,7 @@ export default function BookDetailsPage({ params }: { params: { id: string; slug
   const { items: libraryItems, addToLibrary, removeFromLibrary } = useLibraryStore();
   
   const book = useMemo(() => {
-    const bookId = params.id;
-    const foundBook = allBooks.find(b => b.id.toString() === bookId);
+    const foundBook = allBooks.find(b => b.id.toString() === params.id);
     if (!foundBook) return null;
     return {
       ...foundBook,

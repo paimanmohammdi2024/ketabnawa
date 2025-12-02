@@ -196,8 +196,7 @@ export default function AudiobookDetailsPage({ params }: { params: { id: string;
   const { items: libraryItems, addToLibrary, removeFromLibrary } = useLibraryStore();
   
   const audiobook = useMemo(() => {
-    const audiobookId = params.id;
-    const foundBook = allAudiobooks.find(b => b.id.toString() === audiobookId);
+    const foundBook = allAudiobooks.find(b => b.id.toString() === params.id);
     if (!foundBook) return null;
     return {
       ...foundBook,
