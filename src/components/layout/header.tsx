@@ -101,14 +101,6 @@ export default function Header() {
         {/* Right side actions */}
         <div className="flex items-center justify-end space-x-2 rtl:space-x-reverse">
           <ThemeToggle />
-          {user && (
-             <Button asChild variant="outline" size="icon" className="hidden md:inline-flex">
-              <Link href="/admin/dashboard">
-                <LayoutDashboard className="h-4 w-4" />
-                <span className="sr-only">داشبورد</span>
-              </Link>
-            </Button>
-          )}
           {isUserLoading ? (
             <div className='h-9 w-24 animate-pulse rounded-full bg-muted-foreground/30' />
           ) : user ? (
@@ -141,6 +133,13 @@ export default function Header() {
                       <span>پروفایل</span>
                     </Link>
                   </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin/dashboard">
+                      <LayoutDashboard className="ml-2 h-4 w-4" />
+                      <span>داشبورد</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="ml-2 h-4 w-4" />
                     <span>خروج</span>
