@@ -5,11 +5,11 @@
   animation: cover 5s ease-in-out infinite;
 }
 .book {
-  background-color: hsl(268, 90%, 65%);
+  background-color: hsl(var(--primary));
   border-radius: 0.25em;
   box-shadow:
     0 0.25em 0.5em hsla(0, 0%, 0%, 0.3),
-    0 0 0 0.25em hsl(278, 100%, 57%) inset;
+    0 0 0 0.25em hsl(var(--primary) / 0.8) inset;
   padding: 0.25em;
   perspective: 37.5em;
   position: relative;
@@ -92,14 +92,14 @@
   95%,
   to {
     animation-timing-function: ease-out;
-    background-color: hsl(278, 84%, 67%);
+    background-color: hsl(var(--primary) / 0.9);
   }
   10%,
   40%,
   60%,
   90% {
     animation-timing-function: ease-in;
-    background-color: hsl(271, 90%, 45%);
+    background-color: hsl(var(--primary));
   }
 }
 @keyframes shadow {
