@@ -88,6 +88,7 @@ const relatedBooks = Array.from({ length: 10 }, (_, i) => ({
   id: i + 1,
   title: `کتاب مرتبط ${i + 1}`,
   author: `نویسنده ${i + 1}`,
+  slug: `related-book-${i + 1}`,
   imageUrl: `https://picsum.photos/seed/related${i}/300/450`,
 }));
 
@@ -312,20 +313,22 @@ export default function BookDetailsPage({ params }: { params: { id: string; slug
                 <CarouselContent>
                   {relatedBooks.map((relatedBook) => (
                     <CarouselItem key={relatedBook.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6">
-                      <div className="p-1 group">
-                         <Card className="overflow-hidden rounded-lg border-none glass-card transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/20">
-                            <Image
-                              src={relatedBook.imageUrl}
-                              alt={relatedBook.title}
-                              width={300}
-                              height={450}
-                              className="aspect-[2/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                              data-ai-hint="book cover"
-                            />
-                         </Card>
-                         <h3 className="mt-2 text-sm font-semibold truncate">{relatedBook.title}</h3>
-                         <p className="text-xs text-muted-foreground truncate">{relatedBook.author}</p>
-                      </div>
+                       <Link href={`/book/${relatedBook.id}/${relatedBook.slug}`}>
+                        <div className="p-1 group">
+                           <Card className="overflow-hidden rounded-lg border-none glass-card transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/20">
+                              <Image
+                                src={relatedBook.imageUrl}
+                                alt={relatedBook.title}
+                                width={300}
+                                height={450}
+                                className="aspect-[2/3] w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                data-ai-hint="book cover"
+                              />
+                           </Card>
+                           <h3 className="mt-2 text-sm font-semibold truncate">{relatedBook.title}</h3>
+                           <p className="text-xs text-muted-foreground truncate">{relatedBook.author}</p>
+                        </div>
+                      </Link>
                     </CarouselItem>
                   ))}
                 </CarouselContent>

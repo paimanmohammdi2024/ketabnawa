@@ -4,10 +4,22 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sparkles, ArrowLeft } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
+
+// --- SLUGIFY UTILITY ---
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\u0600-\u06FF\w\-]+/g, '') // Remove all non-word chars except Farsi
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+};
 
 // --- DUMMY DATA ---
 const dummyBooks = Array.from({ length: 15 }, (_, i) => ({
@@ -64,24 +76,25 @@ const Scroller = ({
         )}
       >
         {books.map((book) => (
-          <div
-            key={book.id}
-            className="w-40 shrink-0"
-            data-ai-hint="book cover"
-          >
-            <div className="group relative aspect-[3/4] w-full overflow-hidden rounded-xl">
-              <Image
-                src={book.imageUrl}
-                alt={book.title}
-                fill
-                className="rounded-xl object-cover transition-transform duration-300 group-hover:scale-105"
-              />
+           <Link key={book.id} href={`/book/${book.id}/${slugify(book.title)}`}>
+            <div
+              className="w-40 shrink-0"
+              data-ai-hint="book cover"
+            >
+              <div className="group relative aspect-[3/4] w-full overflow-hidden rounded-xl">
+                <Image
+                  src={book.imageUrl}
+                  alt={book.title}
+                  fill
+                  className="rounded-xl object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <h3 className="mt-2 truncate font-semibold">{book.title}</h3>
+              <p className="truncate text-sm text-muted-foreground">
+                {book.author}
+              </p>
             </div>
-            <h3 className="mt-2 truncate font-semibold">{book.title}</h3>
-            <p className="truncate text-sm text-muted-foreground">
-              {book.author}
-            </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -90,28 +103,32 @@ const Scroller = ({
 
 // --- BOOK CARD COMPONENT ---
 const BookCard = ({ book }: { book: typeof dummyBooks[0] }) => (
-  <div
-    className="group relative overflow-hidden rounded-xl bg-card/50 p-3 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/10"
-    style={{ animation: 'fade-in-up 0.5s ease-out forwards' }}
-  >
-    <div className="relative mb-4 aspect-[3/4] w-full overflow-hidden rounded-lg">
-      <Image
-        src={book.imageUrl}
-        alt={book.title}
-        fill
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
-        data-ai-hint="book cover"
-      />
-    </div>
-    <h3 className="truncate text-lg font-bold">{book.title}</h3>
-    <p className="mb-2 truncate text-sm text-muted-foreground">{book.author}</p>
-    <p className="mb-4 text-xs text-muted-foreground/80 line-clamp-2">
-      {book.description}
-    </p>
-    <Button variant="outline" size="sm" className="w-full">
-      جزئیات بیشتر
-    </Button>
-  </div>
+    <Link href={`/book/${book.id}/${slugify(book.title)}`}>
+        <div
+            className="group relative overflow-hidden rounded-xl bg-card/50 p-3 shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col"
+            style={{ animation: 'fade-in-up 0.5s ease-out forwards' }}
+        >
+            <div className="relative mb-4 aspect-[3/4] w-full overflow-hidden rounded-lg">
+            <Image
+                src={book.imageUrl}
+                alt={book.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                data-ai-hint="book cover"
+            />
+            </div>
+            <div className="flex flex-col flex-grow">
+                <h3 className="truncate text-lg font-bold">{book.title}</h3>
+                <p className="mb-2 truncate text-sm text-muted-foreground">{book.author}</p>
+                <p className="mb-4 text-xs text-muted-foreground/80 line-clamp-2 flex-grow">
+                {book.description}
+                </p>
+                <Button variant="outline" size="sm" className="w-full mt-auto">
+                جزئیات بیشتر
+                </Button>
+            </div>
+        </div>
+    </Link>
 );
 
 // --- FLOATING SUPPORT BUTTON ---

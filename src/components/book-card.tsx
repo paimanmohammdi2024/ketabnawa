@@ -8,42 +8,56 @@ import { Button } from '@/components/ui/button';
 import { PlayCircle } from 'lucide-react';
 
 interface BookCardProps {
-  book: Book;
+  book: Book & { type: 'ebook' | 'audiobook' };
   className?: string;
 }
 
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\u0600-\u06FF\w\-]+/g, '') // Remove all non-word chars except Farsi
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+};
+
 export default function BookCard({ book, className }: BookCardProps) {
   const image = PlaceHolderImages.find((img) => img.id === book.coverImageId);
+  const slug = slugify(book.title);
 
   return (
-    <Card className={cn("overflow-hidden rounded-lg group border-none glass-card transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)]", className)}>
-      <CardContent className="p-0">
-        <div className="relative">
-          {image && (
-            <Image
-              src={image.imageUrl}
-              alt={`Cover of ${book.title}`}
-              width={300}
-              height={450}
-              className="w-full h-auto object-cover aspect-[2/3] transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={image.imageHint}
-            />
-          )}
-          {book.type === 'audiobook' && (
-            <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <PlayCircle className="h-16 w-16 text-white/80" />
-            </div>
-          )}
-        </div>
-        <div className="p-4">
-          <h3 className="font-semibold text-lg truncate text-foreground">{book.title}</h3>
-          <p className="text-sm text-muted-foreground truncate">{book.author}</p>
-          <div className="mt-4 flex justify-between items-center">
-            <span className="font-bold text-primary">{book.price}</span>
-            {book.type === 'ebook' && <Button asChild variant="ghost" size="sm"><Link href="#">View</Link></Button>}
+    <Link href={`/book/${book.id}/${slug}`}>
+      <Card className={cn("overflow-hidden rounded-lg group border-none glass-card transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] h-full", className)}>
+        <CardContent className="p-0 h-full flex flex-col">
+          <div className="relative">
+            {image && (
+              <Image
+                src={image.imageUrl}
+                alt={`Cover of ${book.title}`}
+                width={300}
+                height={450}
+                className="w-full h-auto object-cover aspect-[2/3] transition-transform duration-300 group-hover:scale-105"
+                data-ai-hint={image.imageHint}
+              />
+            )}
+            {book.type === 'audiobook' && (
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <PlayCircle className="h-16 w-16 text-white/80" />
+              </div>
+            )}
           </div>
-        </div>
-      </CardContent>
-    </Card>
+          <div className="p-4 flex flex-col flex-grow">
+            <h3 className="font-semibold text-lg truncate text-foreground">{book.title}</h3>
+            <p className="text-sm text-muted-foreground truncate">{book.author}</p>
+            <div className="mt-4 flex justify-between items-center flex-grow items-end">
+              <span className="font-bold text-primary">{book.price}</span>
+              {book.type === 'ebook' && <Button variant="ghost" size="sm">View</Button>}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
