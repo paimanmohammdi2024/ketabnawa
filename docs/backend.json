@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the BookNova application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User entity."
+        },
+        "email": {
+          "type": "string",
+          "description": "User's email address.",
+          "format": "email"
+        },
+        "username": {
+          "type": "string",
+          "description": "User's username or display name."
+        },
+        "profileId": {
+          "type": "string",
+          "description": "Reference to UserProfile. (Relationship: User 1:1 UserProfile)"
+        }
+      },
+      "required": [
+        "id",
+        "email",
+        "username",
+        "profileId"
+      ]
+    },
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user's profile information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "firstName": {
+          "type": "string",
+          "description": "User's first name."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "User's last name."
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "URL to the user's avatar image.",
+          "format": "uri"
+        },
+        "bio": {
+          "type": "string",
+          "description": "A short biography of the user."
+        }
+      },
+      "required": [
+        "id",
+        "firstName",
+        "lastName"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores core user information. Path-based ownership enforced via the {userId} parameter.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user, corresponding to their Firebase Authentication UID."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/profile/{profileId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": {
+            "$ref": "#/backend/entities/UserProfile"
+          },
+          "description": "Stores user profile information.  Path-based ownership enforced via the {userId} parameter.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user, corresponding to their Firebase Authentication UID."
+            },
+            {
+              "name": "profileId",
+              "description": "The unique identifier of the profile, corresponding to the user's profile ID."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to support user authentication and profile management using a path-based ownership model for user data. This structure prioritizes authorization independence, clarity, and scalability.\n\n*   **Users Collection:** Stores core user information, including authentication details and references to user profiles.\n*   **UserProfiles Collection:** Stores user profile information.\n\n**Authorization Independence:**\n\nThe data structure enforces authorization independence by avoiding hierarchical authorization dependencies. Security rules rely solely on `request.auth.uid` and direct path matching. All user-related data is organized under the `/users/{userId}` path, ensuring that access control can be enforced based on the authenticated user's ID without needing to traverse or `get()` data from parent documents.\n\n**QAPs (Rules Are Not Filters):**\n\nThe structure supports secure `list` operations by segregating data based on ownership. Listing user profiles is not directly supported because of security concerns; this can be achieved via other means if absolutely necessary in the future.\n\n**Invariants:**\n\nThe structure supports the integrity of ownership by using path-based ownership. Each user's data is stored under their respective `/users/{userId}` path, making it straightforward to enforce ownership-based security rules."
+  }
+}

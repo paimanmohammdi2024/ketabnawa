@@ -1,0 +1,80 @@
+/**
+ * Core Philosophy: This ruleset enforces a strict, user-centric ownership model. All data is organized under a user-specific path, ensuring that a user can only access and modify their own information. This design prioritizes security and data privacy by default.
+ *
+ * Data Structure: The data is hierarchically organized under the top-level 'users' collection. Each user's data, including their core user document and profile subcollection, is nested under a document named with their unique Authentication UID (e.g., /users/{userId}/...).
+ *
+ * Key Security Decisions:
+ * - User Data Privacy: A user's data tree (/users/{userId}) is completely private. No other authenticated or unauthenticated user can read or write to it.
+ * - No User Listing: To prevent data scraping and protect user privacy, listing the entire 'users' collection is explicitly disallowed.
+ * - Path-Based Security: All security decisions rely on matching the authenticated user's UID (`request.auth.uid`) with the `userId` wildcard in the document path. This avoids costly and complex `get()` calls to other documents for authorization checks.
+ * - Relational Integrity: On document creation, rules enforce that the document's internal 'id' field matches its ID in the path, ensuring data consistency and preventing ownership mismatch. This 'id' field is immutable.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ------------------------------------------------------------------------
+    // Helper Functions
+    // ------------------------------------------------------------------------
+
+    /**
+     * Checks if the user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the currently authenticated user's UID matches the provided userId.
+     * This is the primary function for enforcing data ownership.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /**
+     * Checks for ownership on an existing document. Used for safe updates and deletes.
+     * Denies requests that target non-existent documents, preventing unintended side effects.
+     */
+    function isExistingOwner(userId) {
+      return isOwner(userId) && resource != null;
+    }
+
+    // ------------------------------------------------------------------------
+    // Collection Rules
+    // ------------------------------------------------------------------------
+
+    /**
+     * @description Manages a user's core account information.
+     * @path /users/{userId}
+     * @allow (get) An authenticated user reads their own user document. auth.uid: 'user_abc', path: /users/user_abc
+     * @deny (get) An authenticated user tries to read another user's document. auth.uid: 'user_abc', path: /users/user_xyz
+     * @deny (list) Any user, authenticated or not, tries to list all users.
+     * @allow (create) A new user creates their own user document. auth.uid: 'user_abc', path: /users/user_abc
+     * @principle Restricts access to a user's own data tree and prevents user enumeration.
+     */
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId) && request.resource.data.id == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingOwner(userId);
+
+      /**
+       * @description Manages a user's detailed profile information.
+       * @path /users/{userId}/profile/{profileId}
+       * @allow (get, list) An authenticated user reads their own profile document(s). auth.uid: 'user_abc', path: /users/user_abc/profile/profile_123
+       * @deny (get, list) An authenticated user tries to read another user's profile(s). auth.uid: 'user_abc', path: /users/user_xyz/profile/profile_456
+       * @allow (create) A user creates a new profile document for themselves. auth.uid: 'user_abc', path: /users/user_abc/profile/profile_123
+       * @principle Enforces document ownership for all operations within a user's private subcollection.
+       */
+      match /profile/{profileId} {
+        allow get: if isOwner(userId);
+        allow list: if isOwner(userId);
+        allow create: if isOwner(userId) && request.resource.data.id == profileId;
+        allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+        allow delete: if isExistingOwner(userId);
+      }
+    }
+  }
+}
