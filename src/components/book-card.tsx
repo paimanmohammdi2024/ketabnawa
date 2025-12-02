@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { PlayCircle } from 'lucide-react';
 
 interface BookCardProps {
-  book: Book & { type: 'ebook' | 'audiobook' };
+  book: Book & { type: 'ebook' | 'audiobook'; duration?: string };
   className?: string;
 }
 
@@ -31,7 +31,7 @@ export default function BookCard({ book, className }: BookCardProps) {
 
   return (
     <Link href={`/book/${book.id}/${slug}`}>
-      <Card className={cn("overflow-hidden rounded-lg group border-none glass-card transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] h-full", className)}>
+      <Card className={cn("overflow-hidden rounded-lg group border-none glass-card transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] h-full", className)}>
         <CardContent className="p-0 h-full flex flex-col">
           <div className="relative">
             {image ? (
@@ -49,17 +49,20 @@ export default function BookCard({ book, className }: BookCardProps) {
                  </div>
             )}
             {book.type === 'audiobook' && (
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <PlayCircle className="h-16 w-16 text-white/80" />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <PlayCircle className="h-14 w-14 text-white/90 drop-shadow-lg" />
               </div>
             )}
           </div>
-          <div className="p-4 flex flex-col flex-grow">
-            <h3 className="font-semibold text-lg truncate text-foreground">{book.title}</h3>
+          <div className="p-3 md:p-4 flex flex-col flex-grow">
+            <h3 className="font-semibold text-base truncate text-foreground">{book.title}</h3>
             <p className="text-sm text-muted-foreground truncate">{book.author}</p>
-            <div className="mt-4 flex justify-between items-center flex-grow items-end">
-              <span className="font-bold text-primary">{book.price}</span>
-              {book.type === 'ebook' && <Button variant="ghost" size="sm">جزئیات</Button>}
+            {book.type === 'audiobook' && book.duration && (
+              <p className="text-xs text-muted-foreground mt-1">{book.duration}</p>
+            )}
+            <div className="mt-3 flex justify-between items-center flex-grow items-end">
+              <span className="font-bold text-primary text-sm">{book.price}</span>
+              <Button variant="ghost" size="sm" className="text-xs h-auto py-1 px-2">جزئیات</Button>
             </div>
           </div>
         </CardContent>
