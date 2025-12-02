@@ -28,9 +28,10 @@ const slugify = (text: string) => {
 export default function BookCard({ book, className }: BookCardProps) {
   const image = PlaceHolderImages.find((img) => img.id === book.coverImageId);
   const slug = slugify(book.title);
+  const href = book.type === 'audiobook' ? `/audiobook/${book.id}/${slug}` : `/book/${book.id}/${slug}`;
 
   return (
-    <Link href={`/book/${book.id}/${slug}`}>
+    <Link href={href}>
       <Card className={cn("overflow-hidden rounded-lg group border-none glass-card transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] h-full", className)}>
         <CardContent className="p-0 h-full flex flex-col">
           <div className="relative">
