@@ -24,6 +24,7 @@ import {
   GoogleAuthProvider,
   updateProfile,
 } from 'firebase/auth';
+import Loader from '@/components/loader';
 
 export default function RegisterPage() {
   const auth = useAuth();
@@ -89,7 +90,7 @@ export default function RegisterPage() {
   if (isUserLoading || user) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <p>در حال بارگذاری...</p>
+        <Loader />
       </div>
     );
   }
