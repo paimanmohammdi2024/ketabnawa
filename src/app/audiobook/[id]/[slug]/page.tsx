@@ -194,9 +194,10 @@ const AudioPlayer = ({ src, coverImageId }: { src: string; coverImageId: string 
 
 export default function AudiobookDetailsPage({ params }: { params: { id: string; slug: string } }) {
   const { items: libraryItems, addToLibrary, removeFromLibrary } = useLibraryStore();
+  const audiobookId = params.id;
 
   const audiobook = useMemo(() => {
-    const foundBook = allAudiobooks.find(b => b.id.toString() === params.id);
+    const foundBook = allAudiobooks.find(b => b.id.toString() === audiobookId);
     if (!foundBook) return null;
     return {
       ...foundBook,
@@ -215,7 +216,7 @@ export default function AudiobookDetailsPage({ params }: { params: { id: string;
       ],
       sampleAudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     };
-  }, [params.id]);
+  }, [audiobookId]);
 
   const isInLibrary = useMemo(() => libraryItems.some(item => item.id === audiobook?.id), [libraryItems, audiobook]);
 
