@@ -6,7 +6,7 @@ import { NawaBookLogo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { LayoutDashboard, Menu, Search, LogIn, LogOut, User as UserIcon } from 'lucide-react';
+import { LayoutDashboard, Menu, Search, LogIn, LogOut, User as UserIcon, Library } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { useAuth, useUser } from '@/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -137,6 +137,12 @@ export default function Header() {
                     <Link href="/admin/dashboard">
                       <LayoutDashboard className="ml-2 h-4 w-4" />
                       <span>داشبورد</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link href="/library">
+                      <Library className="ml-2 h-4 w-4" />
+                      <span>کتابخانه</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
