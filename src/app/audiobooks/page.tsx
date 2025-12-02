@@ -33,7 +33,8 @@ import type { Book } from '@/lib/placeholder-data';
 // --- DUMMY DATA ---
 const filters = ['همه', 'جدیدترین', 'پرفروش‌ترین', 'رایگان'];
 const categories = ['داستانی', 'غیرداستانی', 'کودک و نوجوان', 'کسب و کار', 'شعر'];
-const allAudiobooks: (Book & { duration: string; type: 'audiobook' })[] = Array.from(
+
+const generateAllAudiobooks = () => Array.from(
   { length: 12 },
   (_, i) => ({
     id: 100 + i,
@@ -42,9 +43,15 @@ const allAudiobooks: (Book & { duration: string; type: 'audiobook' })[] = Array.
     price: i % 3 === 0 ? 'رایگان' : `${((i + 1) * 5.5).toFixed(2)}$`,
     coverImageId: `audiobook-${(i % 10) + 1}`,
     duration: `${Math.floor(i/2) + 2} ساعت و ${i * 15 % 60} دقیقه`,
-    type: 'audiobook',
+    type: 'audiobook' as const,
   })
 );
+
+const generateFeaturedAudiobooks = () => popularAudiobooks.map(book => ({ 
+    ...book, 
+    type: 'audiobook' as const, 
+    duration: `${Math.floor(Math.random() * 8) + 2} ساعت و ${Math.floor(Math.random() * 59)} دقیقه` 
+}));
 
 
 // --- FILTER CHIP COMPONENT ---
@@ -74,7 +81,14 @@ const FilterChip = ({
 // --- MAIN AUDIOBOOKS PAGE ---
 export default function AudiobooksPage() {
   const [activeFilter, setActiveFilter] = React.useState('همه');
-  const audiobooksWithTypes = popularAudiobooks.map(book => ({ ...book, type: 'audiobook' as const, duration: `${Math.floor(Math.random() * 8) + 2} ساعت و ${Math.floor(Math.random() * 59)} دقیقه` }));
+  const [allAudiobooks, setAllAudiobooks] = React.useState<(Book & { duration: string; type: 'audiobook' })[]>([]);
+  const [featuredAudiobooks, setFeaturedAudiobooks] = React.useState<(Book & { duration: string; type: 'audiobook' })[]>([]);
+
+  React.useEffect(() => {
+    // Generate data on the client-side to avoid hydration mismatch
+    setAllAudiobooks(generateAllAudiobooks());
+    setFeaturedAudiobooks(generateFeaturedAudiobooks());
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background font-body">
@@ -131,9 +145,9 @@ export default function AudiobooksPage() {
                 <h2 className="text-2xl font-bold tracking-tight mb-8">ویژه‌ها</h2>
                  <Carousel opts={{ align: 'start', loop: true, direction: 'rtl' }} className="w-full">
                     <CarouselContent>
-                        {audiobooksWithTypes.slice(0, 8).map((book) => (
+                        {featuredAudiobooks.slice(0, 8).map((book) => (
                         <CarouselItem key={book.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                             <BookCard book={{...book, duration: `${Math.floor(Math.random() * 8) + 2} ساعت`}} />
+                             <BookCard book={book} />
                         </CarouselItem>
                         ))}
                     </CarouselContent>
