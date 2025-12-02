@@ -116,17 +116,12 @@ const BookCard = ({ book }: { book: typeof dummyBooks[0] }) => (
 
 // --- FLOATING SUPPORT BUTTON ---
 const FloatingSupportButton = () => (
-  <div className="fixed bottom-6 left-6 z-50 flex items-center gap-3">
-    <Button
-      aria-label="پشتیبانی"
-      className="h-14 w-14 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow"
-    >
-      <Sparkles className="h-7 w-7" />
-    </Button>
-    <span className="hidden rounded-full bg-card/80 px-4 py-2 text-sm font-semibold text-foreground shadow-lg backdrop-blur-sm sm:block">
-      سوالی دارید؟
-    </span>
-  </div>
+  <Button
+    aria-label="پشتیبانی"
+    className="fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow"
+  >
+    <Sparkles className="h-7 w-7" />
+  </Button>
 );
 
 // --- MAIN BOOKS PAGE ---
