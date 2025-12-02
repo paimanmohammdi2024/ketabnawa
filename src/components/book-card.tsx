@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Book } from '@/lib/placeholder-data';
@@ -32,7 +33,7 @@ export default function BookCard({ book, className }: BookCardProps) {
       <Card className={cn("overflow-hidden rounded-lg group border-none glass-card transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)] h-full", className)}>
         <CardContent className="p-0 h-full flex flex-col">
           <div className="relative">
-            {image && (
+            {image ? (
               <Image
                 src={image.imageUrl}
                 alt={`Cover of ${book.title}`}
@@ -41,6 +42,10 @@ export default function BookCard({ book, className }: BookCardProps) {
                 className="w-full h-auto object-cover aspect-[2/3] transition-transform duration-300 group-hover:scale-105"
                 data-ai-hint={image.imageHint}
               />
+            ) : (
+                 <div className="aspect-[2/3] w-full bg-muted flex items-center justify-center">
+                    <span className="text-xs text-muted-foreground">No Image</span>
+                 </div>
             )}
             {book.type === 'audiobook' && (
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -53,7 +58,7 @@ export default function BookCard({ book, className }: BookCardProps) {
             <p className="text-sm text-muted-foreground truncate">{book.author}</p>
             <div className="mt-4 flex justify-between items-center flex-grow items-end">
               <span className="font-bold text-primary">{book.price}</span>
-              {book.type === 'ebook' && <Button variant="ghost" size="sm">View</Button>}
+              {book.type === 'ebook' && <Button variant="ghost" size="sm">جزئیات</Button>}
             </div>
           </div>
         </CardContent>
