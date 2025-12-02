@@ -131,9 +131,9 @@ const BookSpecItem = ({ icon: Icon, label, value }: { icon: React.ElementType, l
 
 export default function BookDetailsPage({ params }: { params: { id: string; slug: string } }) {
   const { items: libraryItems, addToLibrary, removeFromLibrary } = useLibraryStore();
-  const bookId = params.id;
-
+  
   const book = useMemo(() => {
+    const bookId = params.id;
     const foundBook = allBooks.find(b => b.id.toString() === bookId);
     if (!foundBook) return null;
     return {
@@ -149,7 +149,7 @@ export default function BookDetailsPage({ params }: { params: { id: string; slug
       imageUrl: `https://picsum.photos/seed/${foundBook.coverImageId}/600/900`,
       isbn: '978-600-8738-33-8',
     }
-  }, [bookId]);
+  }, [params.id]);
 
   const isInLibrary = useMemo(() => libraryItems.some(item => item.id === book?.id), [libraryItems, book]);
 
