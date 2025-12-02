@@ -9,6 +9,26 @@ export type Book = {
   coverImageId: string;
 };
 
+export type LibraryBook = {
+    id: number;
+    title: string;
+    author: string;
+    coverImageId: string;
+    progress: number; // percentage, e.g., 65
+    type: 'ebook';
+};
+
+export type LibraryAudiobook = {
+    id: number;
+    title: string;
+    author: string; // Could be narrator
+    coverImageId: string;
+    progress: number; // percentage, e.g., 30
+    type: 'audiobook';
+    duration: string;
+};
+
+
 export type Category = {
   name: string;
   icon: LucideIcon;
@@ -64,4 +84,17 @@ export const scrollingBooks: Book[] = [
     { id: 12, title: 'Book Title 12', author: 'Author 12', price: '$20.00', coverImageId: 'scroll-12' },
     { id: 13, title: 'Book Title 13', author: 'Author 13', price: '$9.99', coverImageId: 'scroll-13' },
     { id: 14, title: 'Book Title 14', author: 'Author 14', price: '$12.99', coverImageId: 'scroll-14' },
+];
+
+export const myLibraryBooks: LibraryBook[] = [
+    { id: 1, title: 'شکاف کرونوس', author: 'جولیان ورس', coverImageId: 'ebook-1', progress: 65, type: 'ebook' },
+    { id: 4, title: 'پروژه هیل مری', author: 'اندی ویر', coverImageId: 'ebook-4', progress: 100, type: 'ebook' },
+    { id: 8, title: 'ذهنیت رشد', author: 'کارول دوک', coverImageId: 'ebook-8', progress: 20, type: 'ebook' },
+    { id: 6, title: 'بیمار خاموش', author: 'الکس مایکلیدیس', coverImageId: 'ebook-6', progress: 0, type: 'ebook' },
+];
+
+export const myLibraryAudiobooks: LibraryAudiobook[] = [
+    { id: 1, title: 'ذهن دیجیتال', author: 'آروین اش', coverImageId: 'audiobook-1', progress: 30, type: 'audiobook', duration: '۷ ساعت و ۲۳ دقیقه' },
+    { id: 3, title: 'سایبریا', author: 'کنجی تاناکا', coverImageId: 'audiobook-3', progress: 100, type: 'audiobook', duration: '۵ ساعت و ۱۲ دقیقه' },
+    { id: 5, title: 'رویاهای مصنوعی', author: 'مارکوس ونس', coverImageId: 'audiobook-5', progress: 0, type: 'audiobook', duration: '۹ ساعت و ۴۵ دقیقه' },
 ];
