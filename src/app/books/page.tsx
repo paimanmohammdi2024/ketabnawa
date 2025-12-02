@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Headset, ArrowLeft } from 'lucide-react';
+import { Sparkles, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -121,7 +121,7 @@ const FloatingSupportButton = () => (
       aria-label="پشتیبانی"
       className="h-14 w-14 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow"
     >
-      <Headset className="h-7 w-7" />
+      <Sparkles className="h-7 w-7" />
     </Button>
     <span className="hidden rounded-full bg-card/80 px-4 py-2 text-sm font-semibold text-foreground shadow-lg backdrop-blur-sm sm:block">
       سوالی دارید؟

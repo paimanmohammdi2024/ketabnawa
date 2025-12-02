@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Headset } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export default function SupportSection() {
   return (
@@ -15,9 +15,9 @@ export default function SupportSection() {
 
       <Button
         aria-label="پشتیبانی"
-        className="fixed bottom-6 left-6 z-50 h-14 w-14 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow animate-bounce-in"
+        className="fixed bottom-6 left-6 z-50 h-12 w-12 rounded-full shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 dark:support-button-glow animate-bounce-in md:h-14 md:w-14"
       >
-        <Headset className="h-7 w-7" />
+        <Sparkles className="h-7 w-7" />
         <span className="sr-only">پشتیبانی</span>
       </Button>
     </>
