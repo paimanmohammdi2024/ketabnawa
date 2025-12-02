@@ -11,6 +11,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { useAuth, useUser } from '@/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu';
+import { useRouter } from 'next/navigation';
 
 const navLinks = [
   { name: 'کتاب‌ها', href: '/books' },
@@ -22,9 +23,21 @@ export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
+  const router = useRouter();
+
 
   const handleLogout = async () => {
-    await auth.signOut();
+    try {
+      if (auth) {
+        await auth.signOut();
+      }
+    } catch (error) {
+        console.error("Error signing out: ", error);
+    } finally {
+        // Clear any local storage session data if needed
+        localStorage.removeItem('booknova-library-storage');
+        router.push('/');
+    }
   };
 
   return (
@@ -127,26 +140,26 @@ export default function Header() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="cursor-pointer">
                     <Link href="/profile">
                       <UserIcon className="ml-2 h-4 w-4" />
                       <span>پروفایل</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="cursor-pointer">
                     <Link href="/admin/dashboard">
                       <LayoutDashboard className="ml-2 h-4 w-4" />
                       <span>داشبورد</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="cursor-pointer">
                     <Link href="/library">
                       <Library className="ml-2 h-4 w-4" />
                       <span>کتابخانه</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout}>
+                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                     <LogOut className="ml-2 h-4 w-4" />
                     <span>خروج</span>
                   </DropdownMenuItem>
