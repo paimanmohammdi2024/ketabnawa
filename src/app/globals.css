@@ -72,7 +72,7 @@
                 radial-gradient(circle at bottom right, hsl(var(--primary) / 0.15), transparent 50%);
   }
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-white/10;
+    @apply bg-card/70 backdrop-blur-xl border border-white/10;
   }
   .glass-nav {
     @apply bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60;
@@ -110,20 +110,42 @@
     animation: bounce-in 0.6s ease-out forwards;
     animation-delay: 0.5s;
   }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer utilities {
-  .animate-scroll-rtl {
+  .animate-scroll-rtl,
+  .animate-scroll-fast-rtl {
     animation: scroll-rtl 80s linear infinite;
     animation-play-state: paused;
   }
-  .animate-scroll-ltr {
+  .animate-scroll-ltr,
+  .animate-scroll-fast-ltr {
     animation: scroll-ltr 80s linear infinite;
     animation-play-state: paused;
   }
 
-  .group:hover .animate-scroll-rtl,
-  .group:hover .animate-scroll-ltr {
+  .animate-scroll-fast-rtl {
+    animation-duration: 60s;
+  }
+  .animate-scroll-fast-ltr {
+    animation-duration: 60s;
+  }
+
+  .group\:\/carousel:hover .animate-scroll-rtl,
+  .group\:\/carousel:hover .animate-scroll-ltr,
+  .group\:\/carousel:hover .animate-scroll-fast-rtl,
+  .group\:\/carousel:hover .animate-scroll-fast-ltr {
     animation-play-state: running;
   }
 
